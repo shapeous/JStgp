@@ -4,15 +4,16 @@ var gulp = require("gulp")
   ;
 
 // sources
-var appRoot = "./"
-  , htmlSrc = appRoot + "**/*.html"
-  , jscrSrc = appRoot + "**/*.js"
+var root = "assets/"
+  , htmlSrc = root + "**/*.html"
+  , jscrSrc = root + "**/*.js"
   ;
 
 gulp.task("connect", function() {
   // I create a Web server which I will use to live reload the page as changes occur.
   conn.server(
     { "livereload": true
+    , "root": root
     }) // If running gulp from project's root there is no need to supply root argument here.
 });
 

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JStgp</title>
+  </head>
+  <body>
+    <h1>JStgp:</h1>
+      <ul>
+      <script>
+        // You can use built-in isNaN instead, but ...
+        function isNumeric(n) {
+          return !isNaN( parseFloat(n) ) && isFinite(n);
+        }
+        // Using it
+        document.writeln
+        ( "<li>Is 100 numeric? "       + isNumeric(100)   + "</li>"
+        + "<li>Is NaN numeric? "       + isNumeric(NaN)   + "</li>"
+        + "<li>Is Infinity a number? " + !isNaN(Infinity) + " &nbsp; &nbsp; -- Inginity > 1.79769313486231570<sup>e+308</sup>.</li>"
+        );
+      </script>
+      </ul>
+  </body>
+</html>
