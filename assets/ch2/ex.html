@@ -13,9 +13,18 @@
         }
         // Using it
         document.writeln
-        ( "<li>Is 100 numeric? "       + isNumeric(100)   + "</li>"
-        + "<li>Is NaN numeric? "       + isNumeric(NaN)   + "</li>"
-        + "<li>Is Infinity a number? " + !isNaN(Infinity) + " &nbsp; &nbsp; -- Inginity > 1.79769313486231570<sup>e+308</sup>.</li>"
+        ( "<li>Is 100 numeric? "            + isNumeric(100)              + "</li>"
+        + "<li>Is NaN numeric? "            + isNumeric(NaN)              + "</li>"
+        + "<li>Is Infinity a number? "      + !isNaN(Infinity)            + " &nbsp; &nbsp; -- Infinity is number greater than 1.79769313486231570<sup>e+308</sup>.</li>"
+        + "<li>Numbers have methods they are methods on the Math object. For example</li>"
+        + "<li>Math.floor(2.56)? "          + Math.floor(2.56)            + ". It can be used to convert a number into an int.</li>"
+        + "<li>String literals can be wrapped in single or double quotes.</li>"
+        + "<li>Strings are immutable.</li>"
+        + "<li>All characters in JavaScript are 16 bit wide.</li>"
+        + "<li>'A' === '\\u0041?' "         + ('A' === '\u0041')          + "</li>"
+        + "<li>'Shapeous'.lenght? "         + "Shapepus".length           + "</li>"
+        + "<li>'c' + 'a' + 't' === 'cat'? " + ('c' + 'a' + 't' === 'cat') + "</li>"
+        + "<li>'cat'.toUpperCase()? "       + 'cat'.toUpperCase()         + "</li>"
         );
       </script>
       </ul>
