@@ -6,7 +6,20 @@
   <body>
     <h1>JStgp:</h1>
     <p>A copilation unit contains a set of executable statements.  In Web browsers each script tag delivers a complication unit that is compiled and immudiatly executed.  Lacking a linker, JavaScript throws them all together in a common global namespace.  When used inside of a function, the var statement defines the function's private variables.</p>
-    <p>The switch, while, for and do statements are allowed to have an optional label prefix that interacts with the break and continue statements (see statement.js).</p>
+    <p>The switch, while, for and do statements are allowed to have an optional label prefix that interacts with the break and continue statements (see the console).</p>
+    <p>A block is a set of statements wrapped in curly braces. Unlike many other languages, blocks in JavaScript do not create a new scope, so variables should be defined at the top of the function, not in blocks.</p>
+    <p><em>Falsy</em> values
+      <ul>
+        <li>false</li>
+        <li>null</li>
+        <li>undefined</li>
+        <li>the empty string ''</li>
+        <li>the number 0</li>
+        <li>the number NaN</li>
+      </ul>
+      All other values are <em>Truthy</em>, including true, the string 'false', and all objects.
+    </p>
+    <p>The for...in loop enumerates the property names (or keys) of an object.  On each iteration, another property name string from the object is assigned to the variable.  It is ussually necessary to test object.hasOwnProperty(variable) to determine wheather the property name is truly a member of the object or was found on the prototype chain (see the console).</p>
     <script src="statement.js"></script>
   </body>
 </html>
