@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Literals</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Everything is on the console!</h1>
+    <script>
+      // ** Array literal **
+      var people = [{name: "Miguel"},{"name": "Lori"},{'name': 'Sophia'},{"name":"Chloe"}];
+      console.log(people);
+      console.log(people[2]["name"]);
+      
+      // ** Function literal **
+      var Add = function func(x, y) {
+        return x + y;
+      }
+      console.log(Add(10, 24));
+      //console.log(func(10, 24)); // Using func causes an "Uncaught ReferenceError: func is not defined"
+      
+      var AddSpecial = function special(x, y) {
+        if (x + y >= 100) {
+          return x + y;
+        }
+        else {
+          // We can invoke "special" or "AddSpecial" here 
+          return special(x + y, y); // special is accesible when using recusssion
+        }
+      }
+      console.log(AddSpecial(8, 1));
+    </script>
+  </body>
+</html>
