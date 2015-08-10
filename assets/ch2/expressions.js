@@ -76,3 +76,8 @@ console.log(x + y);
 // Refinement
 console.log(Person.firstName);
 console.log(myArray[1]);
+
+Person.age = 44; // Add a new property
+console.log(Person);
+delete Person.age; // or delete Person["age"]
+console.log(Person);
