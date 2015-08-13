@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Objects</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Everything is on the console!</h1>
+    <script>
+      console.log(" ** Simple types ** ")
+      var num = 100;    // Numbers, strings and booleans are object-like in that they have methods
+      var str = "hi";   // i.e str.lenght
+      var isOK = false; // They are immutable
+      var nullVal = null;
+      var undefinedVal = undefined;
+      var undefinedVal2;
+      
+      console.log(num);
+      console.log(str.length);
+      console.log(isOK);
+      console.log(nullVal);
+      console.log(undefinedVal);
+      console.log(undefined === undefinedVal);
+      console.log(undefined === undefinedVal2);
+      //console.log(undefined === undefinedVal3); // "Uncaught ReferenceError: undefinedVal3 is not defined" - Not defined is different and undefined
+      
+      console.log(" ** Objects ** ")
+      // Objects are mutable key collections
+      var myArray = [1,2,3,4,5,6,7,8,9,10];
+      var myFunc = function() { return "I am myFunc!"; }
+      var myRegEx = /ab+c/; // or  = new RegExp("ab+c")
+      var Person = {
+        "name": "Douglas Crockford"
+      , 'age': undefined // Having an undefined value is not supposed to be possible, but it works on Chrome.
+      , "": "Ha ha, this is the property value of an empty string property key."
+      , "role": {
+          "roles": ["son","father","uncle"]
+        }
+      };
+      
+      console.log(myArray.reverse());
+      console.log(myFunc());
+      console.log(typeof(myRegEx) + " " + myRegEx);
+      console.log(Person);
+      console.log(Person.age);
+      console.log(Person[""]);
+      console.log(Person.role.roles);
+      console.log(Person.emails); // Retrieving non-existent members produces undefine
+      console.log(Person.emails || "(none)"); // The '||' can be used to provide defult values.
+      //console.log(Person.emails.main); // Attempting to retrieve values from undefined will throw a TypeError exception. This can be guarded against with the && operator:
+      console.log(Person.emails && Person.emails.main); // It can be guarded against with the && operator
+    </script>
+  </body>
+</html>
