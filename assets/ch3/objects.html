@@ -55,12 +55,12 @@
       
       console.log("\n ** Updates ** ");
       Person.age = 50; // If the property already exists replace it.
-      Person.nickname = "Mr. JavaScript"; // if not augment
+      Person.nickname = "Mr. Yahoo"; // if not augment
       console.log(Person);
       
       console.log("\n ** Reference ** ");
       var x = Person;
-      x.nickname = "Mr. Yahoo";
+      x.nickname = "Mr. JavaScript";
       var nick = Person.nickname;
       console.log(nick); // nick is Mr. Yahoo because x and Person are references to the same object
       console.log(Person);
@@ -74,6 +74,15 @@
       console.log(b);
       console.log(c);
       
+      console.log("\n ** Prototype ** ");
+      var Person_x = Object.create(Person);
+      Person_x.age = 55; // Updates do not affect the prototype
+      Person_x.profession = "Software Architect";
+      console.log(Person_x.name); // Retriving property from the prototype
+      console.log(Person.toString()); // Retrieving a property method all the way from Object.prototype
+      console.log(Person_x.age); // Since age was updated, we can retrive from the object itself
+      console.log(Person_x.arrests); // If the property does not exist nowhere in the property chain, it returns undefined
+      console.log(Person_x); // Navigate to see where the various properties are defined
     </script>
   </body>
 </html>
