@@ -58,6 +58,22 @@
       Person.nickname = "Mr. JavaScript"; // if not augment
       console.log(Person);
       
+      console.log("\n ** Reference ** ");
+      var x = Person;
+      x.nickname = "Mr. Yahoo";
+      var nick = Person.nickname;
+      console.log(nick); // nick is Mr. Yahoo because x and Person are references to the same object
+      console.log(Person);
+      
+      var a = {"whoAmI": "a"}, b = {"whoAmI": "b"}, c = {"whoAmI": "c"}; // a, b, and c each refer to three different empty objects
+      console.log(a);
+      console.log(b);
+      console.log(c);
+      var a = b = c = {"whoAmI": "I am the alpha and the omega."}; // a, b, and c refer to the same empty object
+      console.log(a);
+      console.log(b);
+      console.log(c);
+      
     </script>
   </body>
 </html>
