@@ -62,7 +62,7 @@
       var x = Person;
       x.nickname = "Mr. JavaScript";
       var nick = Person.nickname;
-      console.log(nick); // nick is Mr. Yahoo because x and Person are references to the same object
+      console.log(nick); // nick is Mr. JavaScript because x and Person are references to the same object
       console.log(Person);
       
       var a = {"whoAmI": "a"}, b = {"whoAmI": "b"}, c = {"whoAmI": "c"}; // a, b, and c each refer to three different empty objects
@@ -83,6 +83,15 @@
       console.log(Person_x.age); // Since age was updated, we can retrive from the object itself
       console.log(Person_x.arrests); // If the property does not exist nowhere in the property chain, it returns undefined
       console.log(Person_x); // Navigate to see where the various properties are defined
+      
+      console.log("\n ** Reflection **");
+      console.log(typeof Person_x.age);
+      console.log(typeof Person_x.profession);
+      console.log(typeof Person_x.role);
+      console.log(typeof Person_x.manifest);
+      console.log(typeof Person_x.toString); // When reflecting be aware that some
+      console.log(typeof Person_x.constructor); // values could be functions
+      
     </script>
   </body>
 </html>
