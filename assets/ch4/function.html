@@ -23,6 +23,18 @@
       console.log(s);
       console.log("add(50,50): " + s.add(50, 50));
       console.log("2^10: " + s.power(2, 10));
+      
+      console.log("\n** Invocation **");
+      console.log("   * Method Invocation Pattern");
+      var num = {
+        val: 0,
+        inc: function (x) {
+          this.val += (typeof x === 'number'? x : 1);
+        }
+      };
+      num.inc();
+      num.inc(2);
+      console.log(num.val);
    </script>
   </body>
 </html>
