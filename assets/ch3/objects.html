@@ -102,6 +102,11 @@
           console.log(k + ": " + typeof Person_x[k] + " - hasOwnProperty: " + Person_x.hasOwnProperty(k));
         }
       }
+      
+      console.log("\n ** Delete **");
+      delete Person_x.age;
+      console.log(Person_x);
+      console.log("Age: " + Person_x.age); // Person.age shines through instead
     </script>
   </body>
 </html>
