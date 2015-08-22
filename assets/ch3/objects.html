@@ -34,10 +34,13 @@
       var myRegEx = /ab+c/; // or  = new RegExp("ab+c")
       var Person = {
         "name": "Douglas Crockford"
-      , 'age': undefined // Having an undefined value is not supposed to be possible, but it works on Chrome.
+      , 'age': undefined // Having an undefined value is not supposed to be possible, but it works on Chrome, Safari, and even IE9.
       , "": "Ha ha, this is the property value of an empty string property key."
       , "role": {
           "roles": ["son","father","uncle"]
+        }
+      , "toString": function() { // Added to test enumeration below
+          return this.name;
         }
       };
       
@@ -92,6 +95,13 @@
       console.log(typeof Person_x.toString); // When reflecting be aware that some
       console.log(typeof Person_x.constructor); // values could be functions
       
+      console.log("\n ** Enumeration **");
+      var k;
+      for (k in Person_x) {
+        if (typeof Person_x[k] !== 'function') { // Skip properties of type 'function', i.e. 'toString'
+          console.log(k + ": " + typeof Person_x[k] + " - hasOwnProperty: " + Person_x.hasOwnProperty(k));
+        }
+      }
     </script>
   </body>
 </html>
