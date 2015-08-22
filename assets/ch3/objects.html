@@ -107,6 +107,20 @@
       delete Person_x.age;
       console.log(Person_x);
       console.log("Age: " + Person_x.age); // Person.age shines through instead
+      
+      console.log("\n ** Global Abatement **");
+      var shapeous = {}; // By declaring a single global variable for an application we can reduce the chance of conflicts with other code
+      shapeous.Person = {
+          "name": "Douglas Crockford"
+        , 'age': 60
+        , "toString": function() {
+            return this.name;
+        }
+      };
+      shapeous.Employee = Object.create(shapeous.Person);
+      shapeous.Employee.title = "Software Architect";
+      
+      console.log(shapeous);
     </script>
   </body>
 </html>
