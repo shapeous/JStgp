@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Objects</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Everything is on the console!</h1>
+    <script>
+      var s = {}; // Shapeous app object
+      
+      console.log("** Function Literal **");
+      s.add = function (a, b) {
+        return a + b;
+      };
+      s.power = function pwr(base, ex) {
+        return (ex === 0? 1 : base * pwr(base, ex - 1));
+      }
+      
+      console.log(s);
+      console.log("add(50,50): " + s.add(50, 50));
+      console.log("2^10: " + s.power(2, 10));
+   </script>
+  </body>
+</html>
