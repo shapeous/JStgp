@@ -81,6 +81,16 @@
       var status = s.Animal.prototype.talk.apply(s.statusObj); // We can invoke talk even though 's.statusObj' is not an 'Animal'.
       console.log(status);
       console.log(s);
+      
+      console.log("\n** Arguments **");
+      s.addAll = function () {
+        i = undefined, sum = 0;
+        for (i = 0; i < arguments.length; i += 1) {
+          sum += arguments[i];
+        }
+        return sum;
+      };
+      console.log(s.addAll(4,8,15,16,23,42));
    </script>
   </body>
 </html>
