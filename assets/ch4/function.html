@@ -68,6 +68,19 @@
       console.log(Dog.talk());
       console.log(Human.talk());
       console.log(s);
+      
+      console.log("\n   * Apply Invocation Pattern");
+      s.array = [4, 6];
+      var sum = s.add.apply(null, s.array); // Lets you construct an array of arguments to invoke a function.
+      console.log(sum);
+      console.log(s);
+      
+      s.statusObj = {
+        "status": "A-OK"
+      };
+      var status = s.Animal.prototype.talk.apply(s.statusObj); // We can invoke talk even though 's.statusObj' is not an 'Animal'.
+      console.log(status);
+      console.log(s);
    </script>
   </body>
 </html>
