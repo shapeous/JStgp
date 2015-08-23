@@ -15,6 +15,18 @@
       console.log("** Function Literal **");
       s.val = undefined;
       s.add = function (a, b) {
+        if (a === undefined || b === undefined) {
+          throw {
+            "name": "UndefinedException",
+            "message": "add method needs defined arguments"
+          }
+        }
+        if (typeof a !== 'number' || typeof b !== 'number') {
+          throw {
+            "name": "TypeException",
+            "message": "add method needs number parameters"
+          }
+        }
         return a + b;
       };
       s.double = function (x) {
@@ -91,6 +103,19 @@
         return sum;
       };
       console.log(s.addAll(4,8,15,16,23,42));
+      
+      console.log("\n** Exceptions **");
+      try {
+        //console.log(s.add(undefined, undefined)); // [un]comment to see the other exception
+        console.log(s.add("",true));
+      } catch(e) {
+        if (e.name === 'UndefinedException') {
+          console.log("*** WTH ***")
+        } else if (e.name === 'TypeException') {
+          console.log("*** WTF ***")
+        }
+        console.error(e.name + ": " + e.message);
+      }
    </script>
   </body>
 </html>
