@@ -116,6 +116,17 @@
         }
         console.error(e.name + ": " + e.message);
       }
+      
+      console.log("\n** Augmenting Types **");
+      if (!Number.prototype.integer) {
+        Number.prototype["integer"] = function () {
+          return Math[this < 0? 'ceil' : 'floor'](this);
+        }
+      }
+      console.log(
+        (-10 / 3).integer()
+      );
+      console.log(Number.prototype);
    </script>
   </body>
 </html>
