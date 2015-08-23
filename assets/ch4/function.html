@@ -54,6 +54,20 @@
       
       console.log("\n   * Function Invocation Pattern");
       console.log(s.double(10));
+      
+      console.log("\n   * Constructor Invocation Pattern");
+      s.Animal = function (status) {
+        this.status = status;
+      };
+      // Give all instances of 'Animal' a public method, 'talk'.
+      s.Animal.prototype.talk = function () {
+        return this.status;
+      };
+      var Dog = new s.Animal("Woof!");
+      var Human = new s.Animal("Hello, There!");
+      console.log(Dog.talk());
+      console.log(Human.talk());
+      console.log(s);
    </script>
   </body>
 </html>
