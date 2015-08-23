@@ -13,12 +13,28 @@
       var s = {}; // Shapeous app object
       
       console.log("** Function Literal **");
+      s.val = undefined;
       s.add = function (a, b) {
         return a + b;
       };
+      s.double = function (x) {
+        //console.log(this); // Shows that this points to the 's' Object literal
+        this.val = x;
+        that = this; // Uncomment the 'console.log' in this function to see how, this is necessary.
+        
+        helper = function () {
+          //console.log(this); // Shows that 'this' now points to the Global object within this inner function
+          //console.log(that); // Shows how 'that' fixes the issue
+          
+          that.val = that.add(that.val, that.val);
+        };
+        
+        helper(); // invoke
+        return this.val;
+      };
       s.power = function pwr(base, ex) {
         return (ex === 0? 1 : base * pwr(base, ex - 1));
-      }
+      };
       
       console.log(s);
       console.log("add(50,50): " + s.add(50, 50));
@@ -35,6 +51,9 @@
       num.inc();
       num.inc(2);
       console.log(num.val);
+      
+      console.log("\n   * Function Invocation Pattern");
+      console.log(s.double(10));
    </script>
   </body>
 </html>
