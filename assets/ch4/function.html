@@ -9,6 +9,7 @@
   </head>
   <body>
     <h1>Everything is on the console!</h1>
+    <input type="range" min="0" max="100" value="98" disabled>
     <script>
       var s = {}; // Shapeous app object
       
@@ -129,6 +130,7 @@
       console.log(Number.prototype);
       
       console.log("\n** Recursion **");
+      // This function can fail by exhausting the return stack because JavaScript doesn't currently optimized tail recursion.
       s.hanoi = function hanoi(disc, src, aux, dst) {
         if (disc > 0) {
           hanoi(disc - 1, src, dst, aux);
@@ -136,7 +138,41 @@
           hanoi(disc - 1, aux, src, dst);
         }
       }
-      s.hanoi(3, "Src", "Aux", "Dst");
+      s.hanoi(9, "Src", "Aux", "Dst"); // Chrome completes slowly from 11! - 17! (maybe able to go beyond that). IE11 does not complete starting from 10!.
+      
+      console.log("\n   ** Walk the DOM");
+      s.walkTheDOM = function wtd(node, func) {
+        func(node);
+        node = node.firstChild;
+        while (node) {
+          wtd(node, func);
+          node = node.nextSibling;
+        }
+      };
+      s.getElementByAttribute = function (att, value) {
+        var results = [];
+        
+        s.walkTheDOM(document.body, function (node) {
+          var actual = node.nodeType === 1 && node.getAttribute(att);
+          if (typeof actual === 'string' && (actual === value || typeof value !== 'string')) {
+            results.push(node);
+          }
+        });
+        return results;
+      };
+      console.log("get an element with a 'type' attribute and a value of 'range':");
+      console.log(s.getElementByAttribute("type", "range")[0]);
+      
+      s.factorial = function f(n, product) {
+        product = product || 1;
+        
+        if (n < 2) {
+          return product;
+        }
+        return f(n - 1, product * n);
+      };
+      var n = 170; // Increamenting this value by one causes the function to return 'Infinity'.
+      console.log(n + "! = " + s.factorial(n));
    </script>
   </body>
 </html>
