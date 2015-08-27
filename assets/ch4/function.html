@@ -173,6 +173,24 @@
       };
       var n = 170; // Increamenting this value by one causes the function to return 'Infinity'.
       console.log(n + "! = " + s.factorial(n));
+      
+      console.log("\n** Scope **");
+      s.parentScope = function () {
+        var a = 3, b = 5;
+        
+        var childScope = function () {
+          var b = 7, c = 11;
+          console.log("child:[a: " + a + "][b: " + b + "][c: " + c + "]");
+          
+          a += b + c;
+          console.log("child:[a: " + a + "][b: " + b + "][c: " + c + "]");
+        };
+        console.log("parent:[a: " + a + "][b: " + b + "]");
+        
+        childScope();
+        console.log("parent:[a: " + a + "][b: " + b + "]");
+      };
+      s.parentScope();
    </script>
   </body>
 </html>
