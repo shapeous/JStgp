@@ -211,6 +211,22 @@
       myNum.inc(99);
       myNum.inc();
       console.log(s.num.getNum());
+      
+      // The "animal" function is designed to be used without the "new" prefix (hence the lower case).
+      s.animal = function (status) {
+        return { // It returns a new Object literal
+          talk: function () {
+            return status;
+          }
+        };
+      };
+      
+      // "Dog" and "Human" hold references to the "Animal" Object
+      var Dog = s.animal("Woof!");
+      var Human = s.animal("Hello, There!");
+      console.log(Dog.talk());
+      console.log(Human.talk());
+      console.log(Dog);
    </script>
   </body>
 </html>
