@@ -191,6 +191,26 @@
         console.log("parent:[a: " + a + "][b: " + b + "]");
       };
       s.parentScope();
+      
+      console.log("\n** Closure **");
+      s.num = (function () {
+        var val = 0;
+        
+        return { 
+          // These methods have access to val
+          inc: function (x) {
+            val += typeof x === 'number'? x : 1;
+          },
+          getNum: function () {
+            return val;
+          } 
+        };
+      }()); // Notice the (), we are assigning the result of invoking the anonymous function to num. The function returns an object containing two methods.
+      
+      var myNum = s.num;
+      myNum.inc(99);
+      myNum.inc();
+      console.log(s.num.getNum());
    </script>
   </body>
 </html>
