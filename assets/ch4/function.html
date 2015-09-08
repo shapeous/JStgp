@@ -10,6 +10,13 @@
   <body>
     <h1>Everything is on the console!</h1>
     <input type="range" min="0" max="100" value="98" disabled>
+    
+    <ul>BAD
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+      <li>Four</li>
+    </ul>
     <script>
       var s = {}; // Shapeous app object
       
@@ -242,6 +249,23 @@
         setTimeout(step, 100);
       };
       s.fade(document.body);
+      
+      console.log("\n** Not a Closure **");
+      // Make a function that assigns event handler functions to an array of nodes the wrong way
+      // When you click on a node, an alert box is supposed to display the ordinal of the node, but it always displays the number of nodes instead
+      // It fails because the handler functions are bound to the variable i, not the value of the variable i at the time the function was made.
+      
+      var add_the_handlers = function (nodes) {
+        console.log(nodes);
+        var i = undefined;
+        for (i = 0; i < nodes.length; i += 1) {
+          nodes[i].onclick = function (e) {
+            alert(i);
+          };
+        }
+      };
+      
+      add_the_handlers(document.body.children[2].children);
    </script>
   </body>
 </html>
