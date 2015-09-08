@@ -11,7 +11,14 @@
     <h1>Everything is on the console!</h1>
     <input type="range" min="0" max="100" value="98" disabled>
     
-    <ul>BAD
+    <ul style="float: right"><p>Click the list items to get the Ordinal (Not working)</p>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+      <li>Four</li>
+    </ul>
+    <ul style="float: left">
+      <p>Click the list items to get the Ordinal (Working)</p>
       <li>One</li>
       <li>Two</li>
       <li>Three</li>
@@ -250,7 +257,6 @@
       };
       s.fade(document.body);
       
-      console.log("\n** Not a Closure **");
       // Make a function that assigns event handler functions to an array of nodes the wrong way
       // When you click on a node, an alert box is supposed to display the ordinal of the node, but it always displays the number of nodes instead
       // It fails because the handler functions are bound to the variable i, not the value of the variable i at the time the function was made.
@@ -260,12 +266,27 @@
         var i = undefined;
         for (i = 0; i < nodes.length; i += 1) {
           nodes[i].onclick = function (e) {
-            alert(i);
+            console.log(i);
           };
         }
       };
       
       add_the_handlers(document.body.children[2].children);
+      
+      s.add_the_handlers = function (nodes) {
+        console.log(nodes);
+        var logOrdinal = function (i) {
+          return function (e) {
+            console.log(i);
+          };
+        };
+        var i = undefined;
+        for (i = 0; i < nodes.length; i += 1) {
+          nodes[i].onclick = logOrdinal(i);
+        }
+      };
+      
+      s.add_the_handlers(document.body.children[3].children);
    </script>
   </body>
 </html>
