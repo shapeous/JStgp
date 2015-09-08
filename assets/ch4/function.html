@@ -227,6 +227,21 @@
       console.log(Dog.talk());
       console.log(Human.talk());
       console.log(Dog);
+      
+      // Set a DOM's color to yellow, then fades it to white
+      s.fade = function(node) {
+        var level =  1;
+        var step = function () {
+          var hex = level.toString(16);
+          node.style.backgroundColor = '#FFFF' + hex + hex;
+          if (level < 15) {
+            level += 1;
+            setTimeout(step, 100);
+          }
+        };
+        setTimeout(step, 100);
+      };
+      s.fade(document.body);
    </script>
   </body>
 </html>
