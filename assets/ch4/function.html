@@ -287,6 +287,36 @@
       };
       
       s.add_the_handlers(document.body.children[3].children);
+      
+      console.log("\n** Callbacks **");
+      
+      s.quasiAsync = function (callBack) {
+        setTimeout(function () {
+          callBack();
+        }, 0);
+      }
+      function add4to0() { console.log(s.add(4, 0)); }
+      function add4to2() { console.log(s.add(4, 2)); }
+      function add4toN() {
+        // The IO prompt function isn't asynchronous and it will block the execution of any function that is scheduled after it.
+        console.log(s.add(4, parseInt(prompt("Enter a number"), 10)));
+      }
+      
+      console.log("Sync Test: START");
+      // Passing executed piggyback callbacks overrides the order of execution
+      s.quasiAsync(add4toN, function () {   // This executes last
+        s.quasiAsync(add4to2, function () { // This executes second
+          s.quasiAsync(add4to0);            // This executes first
+        }()); // Notice the ()s, this makes
+      }());   // the piggybacks execute
+      console.log("Sync Test: END");
+      
+      console.log("Quasi-Async Test: START");
+      // These functions will execute in any order
+      s.quasiAsync(add4toN);
+      s.quasiAsync(add4to2);
+      s.quasiAsync(add4to0);
+      console.log("Quasi-Async Test: END");
    </script>
   </body>
 </html>
