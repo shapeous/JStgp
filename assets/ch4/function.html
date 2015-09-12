@@ -372,6 +372,35 @@
       seqer.set_seq(1000);
       console.log("    " + seqer.gensym());
       console.log("    " + seqer.gensym());
+      
+      console.log("\n** Cascade **");
+      
+      s.Cascade = function () {
+        var water = 0;
+        
+        return {
+          inc: function (wtr) {
+            water += wtr === undefined? 1 : wtr;
+            return this;
+          },
+          mul: function (wtr) {
+            water *= wtr === undefined? water : wtr;
+            return this;
+          },
+          display: function () {
+            return water;
+          }
+        };
+      };
+      
+      var cascade = s.Cascade();
+      console.log(
+        cascade
+          .inc()
+          .inc(19)
+          .mul(.5)
+          .display()
+      );
    </script>
   </body>
 </html>
