@@ -415,6 +415,21 @@
       
       var addOneHundred = s.add.curry(100);
       console.log(addOneHundred(11));
+      
+      console.log("\n** Memoization **");
+      var called = 0;
+      
+      // Not using Memoization (fully recursive implementation)
+      s.fibonacci = function fib(n) {
+        called += 1;
+        return n < 2? n : fib(n - 1) + fib(n - 2);
+      };
+      
+      var i = undefined;
+      for (i = 0; i <= 10; i += 1) {
+        console.log("// f(" + i + "): " + s.fibonacci(i));
+      }
+      console.log("s.fibonacci was called " + called + " time(s)");
    </script>
   </body>
 </html>
