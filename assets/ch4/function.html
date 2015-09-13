@@ -419,29 +419,41 @@
       console.log("\n** Memoization **");
       var called = 0;
       
-      // Using Memoization
-      s.fibonacci = (function () {
-        var memo = [0,1];
-        
-        var fib = function (n) {
+      // Genetic memoizer function we can use to create memoized function 
+      s.memoizer = function (memo, formula) {
+        var recur = function (n) {
           called += 1;
           var result = memo[n];
           
           if (typeof result !== 'number') {
-            result = fib(n - 1) + fib(n - 2);
+            result = formula(recur, n);
             memo[n] = result;
           }
           
           return result;
         };
-        return fib;
-      }());
+        return recur;
+      };
+      
+      // Memoized fibonacci definition
+      s.fibonacci = s.memoizer([0,1], function (recur, n) {
+        return recur(n - 1) + recur(n - 2);
+      });
+      // Memoized factorial definition
+      s.factorial = s.memoizer([1,1], function (recur, n) {
+        return n * recur(n - 1);
+      });
       
       var i = undefined;
       for (i = 0; i <= 10; i += 1) {
-        console.log("// f(" + i + "): " + s.fibonacci(i));
+        console.log("// fib(" + i + "): " + s.fibonacci(i));
       }
       console.log("s.fibonacci was called " + called + " time(s)");
+      
+      for (i = 0; i <= 10; i += 1) {
+        console.log("// fac(" + i + "): " + s.factorial(i));
+      }
+      console.log("s.factorial was called " + called + " time(s)");
    </script>
   </body>
 </html>
