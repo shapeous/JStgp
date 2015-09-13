@@ -419,11 +419,23 @@
       console.log("\n** Memoization **");
       var called = 0;
       
-      // Not using Memoization (fully recursive implementation)
-      s.fibonacci = function fib(n) {
-        called += 1;
-        return n < 2? n : fib(n - 1) + fib(n - 2);
-      };
+      // Using Memoization
+      s.fibonacci = (function () {
+        var memo = [0,1];
+        
+        var fib = function (n) {
+          called += 1;
+          var result = memo[n];
+          
+          if (typeof result !== 'number') {
+            result = fib(n - 1) + fib(n - 2);
+            memo[n] = result;
+          }
+          
+          return result;
+        };
+        return fib;
+      }());
       
       var i = undefined;
       for (i = 0; i <= 10; i += 1) {
