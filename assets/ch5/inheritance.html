@@ -45,33 +45,35 @@
       console.log(m1.getName());
       console.log(m1.name); // There is no privacy, all variables i.e. name are public.
       
-      // Cat object inherits from Mammal
+      // Defining an inherits method
+      Function.prototype.method = function (name, func) {
+        this.prototype[name] = func;
+        return this;
+      };
+      Function.method('inherits', function (Parent) {
+        this.prototype = new Parent();
+        return this; 
+      });
+      
+      // Define Cat object to inherit from Mammal in a cascade style in one statement
       var Cat = function (name) {
         this.name = name;
         this.saying = "meow";
-      };
-      console.log("Before")
-      console.log(Cat.prototype);
-      
-      // Replace Cat.prototype with a new instance of Mammal
-      Cat.prototype = new Mammal
-      console.log("After replacing Cat.prototype with a new instance of Mammal")
-      console.log(Cat.prototype);
-      
-      // Augment the new prototype with new purr and getName methods
-      Cat.prototype.purr = function (n) {
-        var i, s = "";
-        for (i = 0; i < n; i += 1) {
-          if (s) {
-            s += "-";
+      }
+        .inherits(Mammal)
+        .method("purr", function (n) {
+          var i, s = "";
+          for (i = 0; i < n; i += 1) {
+            if (s) {
+              s += "-";
+            }
+            s += "r";
           }
-          s += "r";
-        }
-        return s;
-      };
-      Cat.prototype.getName = function () {
-        return this.says() + " " + this.name + " " + this.says();
-      };
+          return s;
+        })
+        .method("getName", function () {
+          return this.says() + " " + this.name + " " + this.says();
+        });
       console.log("After adding purr and getName (overwritten) methods");
       console.log(Cat.prototype);
       
