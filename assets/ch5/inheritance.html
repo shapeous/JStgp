@@ -44,6 +44,43 @@
       var m1 = new Mammal("Herb the Mammal");  // forgetting to use "new" here will cause will cause 
       console.log(m1.getName());
       console.log(m1.name); // There is no privacy, all variables i.e. name are public.
+      
+      // Cat object inherits from Mammal
+      var Cat = function (name) {
+        this.name = name;
+        this.saying = "meow";
+      };
+      console.log("Before")
+      console.log(Cat.prototype);
+      
+      // Replace Cat.prototype with a new instance of Mammal
+      Cat.prototype = new Mammal
+      console.log("After replacing Cat.prototype with a new instance of Mammal")
+      console.log(Cat.prototype);
+      
+      // Augment the new prototype with new purr and getName methods
+      Cat.prototype.purr = function (n) {
+        var i, s = "";
+        for (i = 0; i < n; i += 1) {
+          if (s) {
+            s += "-";
+          }
+          s += "r";
+        }
+        return s;
+      };
+      Cat.prototype.getName = function () {
+        return this.says() + " " + this.name + " " + this.says();
+      };
+      console.log("After adding purr and getName (overwritten) methods");
+      console.log(Cat.prototype);
+      
+      var simba = new Cat("Simba");
+      console.log(simba.says());
+      console.log(simba.purr(5));
+      console.log(simba.getName());
+      console.log(simba.name);    // There is no privacy, all variables are public:
+      console.log(simba.saying);  // i.e. name and saying are both public
    </script>
   </body>
 </html>
