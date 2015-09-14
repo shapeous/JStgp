@@ -26,6 +26,24 @@
     </ul>
     <script>
       var s = {}; // Shapeous app object
+      
+      console.log("I N H E R I T A N C E");
+      
+      var Mammal = function (name) { // Mammal is a constructor, that is why it is capitalized.
+        this.name =  name;
+      };
+      
+      Mammal.prototype.getName = function () {
+        return this.name;
+      };
+      
+      Mammal.prototype.says = function () {
+        return this.saying || "";
+      };
+      
+      var m1 = new Mammal("Herb the Mammal");  // forgetting to use "new" here will cause will cause 
+      console.log(m1.getName());
+      console.log(m1.name); // There is no privacy, all variables i.e. name are public.
    </script>
   </body>
 </html>
