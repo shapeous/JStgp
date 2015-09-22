@@ -83,6 +83,94 @@
       console.log(simba.getName());
       console.log(simba.name);    // There is no privacy, all variables are public:
       console.log(simba.saying);  // i.e. name and saying are both public
+      
+      console.log("\n** Functional: The Module Pattern **");
+       var mammal = function (spec) {
+        var that = {};
+        
+        that.getName = function () {
+          return spec.name;
+        };
+        
+        that.says = function () {
+          return spec.saying || '';
+        }
+        
+        var privateMethod = function () {
+          spec.wink = " ;)";
+          return spec.wink;
+        };
+        
+        that.publicMethod = function () {
+          return privateMethod()
+        };
+        return that;
+      };
+      
+      var person = mammal({name: "Herb"});
+      console.log(person);
+      console.log(person.that);             // Finally properties in this case "that"
+      //console.log(person.privateMethod());  // and "privateMethod()" are private
+      console.log(person.publicMethod());  // and "privateMethod()" are private
+      
+      // Let's define a subclass, cat
+      var cat = function (spec) {
+        spec.saying = spec.saying || "meow";
+        var that = mammal(spec);
+        
+        that.purr = function (n) {
+          var i, s = spec.name + " purrs " + n + " times: ";
+          for (i = 0; i < n; i += 1) {
+            if (s) {
+              s += "-";
+            }
+            s += "r";
+          }
+          return s;
+        };
+        
+        that.getName = function () {
+          return that.says() + " " + spec.name + " " + that.says();
+        };
+        
+        return that;
+      };
+      
+      var simba = cat({name: "Simba"});
+      console.log(simba);
+      console.log(simba.that || "the 'that' property is private and therefore not accessible.");
+      console.log(simba.publicMethod() + " <- 'publicMethod()' is an inherited method");
+      console.log(simba.says() + " <- 'says()' is an inherited method");
+      console.log(simba.purr(100));
+      console.log(simba.getName());
+      
+      // Let's define a super method
+      Object.method("superior", function (name) {
+        var that = this,
+            method = that[name];
+        
+        return function () {
+          return method.apply(that, arguments);
+        };
+      });
+      
+      // Let's define a subclass of cat
+      var coolcat = function (spec) {
+        var that = cat(spec),
+            superGetName = that.superior("getName");
+        
+        that.getName = function (n) {
+          return "like " + superGetName() + ' baby';
+        };
+        
+        return that;
+      };
+      
+      var simba = coolcat({name: "Simba"});
+      console.log(simba);
+      console.log(simba.getName());
+      console.log(simba.purr(10) + "\t\t\t\t <- 'purr()' is an inherited method");
+      console.log(simba.publicMethod() + " <- 'publicMethod()' is an inherited method all the way down to 'mammal'");
    </script>
   </body>
 </html>
