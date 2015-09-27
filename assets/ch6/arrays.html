@@ -27,6 +27,27 @@
     <script>
       var shapeous = function () { // Shapeous app object
         console.log("** A r r a y s **");
+        
+        console.log("\n** Array Literal **");
+        // Arrays are actually objects in JavaScript. They are not as efficient as real arrays but they are convinient
+        var empty = [];
+        var nums  = ['zero','one','three','four','five','six','seven','eight','nine'];
+        console.log(empty.length, empty[1], empty);
+        console.log(nums.length, nums[1], nums);
+        
+        // JavaScript allows an array to contain any mixture of values
+        var misc =
+        [ 'string'
+        , 98.6
+        , true
+        , false
+        , null
+        , undefined
+        , [' nested', 'array']
+        , {object: true}
+        , NaN
+        , Infinity ];
+        console.log(misc.length, misc[1], misc);
       }();
    </script>
   </body>
