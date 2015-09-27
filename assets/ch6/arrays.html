@@ -63,6 +63,27 @@
         nums[nums.length] = "shi";
         nums.push("pushed"); // syntatically the more onvinient method to append numbers to the end of an array.
         console.log("Appending 2 items to the end changes the length to " + nums.length, "and the array itself to: ", nums);
+        
+        console.log("\n** Arrays: Deleting Elements **");
+        delete nums[1];
+        delete nums[3];
+        delete nums[4];
+        console.log
+        ( "Deleating items leaves undefined holes in the Array", nums
+        , '["' + nums[0] + '", "' + nums[1] + '", ' + nums[2] + ', "' + nums[3] + '", "' + nums[4] + '"]\t<- 4Chrome' );
+        
+        //reset to use 'splice' method instead
+        nums  = ['zero','one','two','three','four','five','six','seven','eight','nine'];
+        num1  = ['zero','one','two','three','four','five','six','seven','eight','nine'];
+        num2  = ['zero','one','three','four','five','six','seven','eight','nine'];
+        num3  = ['zero','one','three','four','five','six','seven'];
+        console.log("After initializing, before 'Splicing': ", num1, " num1.len: " + num1.length);
+        nums.splice(2, 1);
+        console.log("Splicing the 2nd item:                 ", num2, " num2.len: " + num2.length);
+        nums.splice(7, 2);
+        console.log("Splicing items 7, and 8 (formally 8, 9)", num3, " num3.len: " + num3.length);
+        nums.splice(5, 1, "seis", "seis 1 1/2");
+        console.log("Splicing item 5, and inserting 2 items ", nums, " nums.len: " + nums.length);
       }();
    </script>
   </body>
