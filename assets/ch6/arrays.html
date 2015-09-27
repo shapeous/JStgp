@@ -31,7 +31,7 @@
         console.log("\n** Array Literal **");
         // Arrays are actually objects in JavaScript. They are not as efficient as real arrays but they are convinient
         var empty = [];
-        var nums  = ['zero','one','three','four','five','six','seven','eight','nine'];
+        var nums  = ['zero','one','two','three','four','five','six','seven','eight','nine'];
         console.log(empty.length, empty[1], empty);
         console.log(nums.length, nums[1], nums);
         
@@ -48,6 +48,21 @@
         , NaN
         , Infinity ];
         console.log(misc.length, misc[1], misc);
+        
+        console.log("\n** Array's Length Property **");
+        var outOfBound = [];
+        console.log("lenght: ", outOfBound.length);
+        
+        outOfBound[1000000] = true;
+        console.log("lenght: ", outOfBound.length);
+        console.log("However there is only one elemnt, namely: ", outOfBound);
+        
+        nums.length = 3;
+        console.log("Chaning the length of nums to 3 causes the array to shrink ", nums);
+        
+        nums[nums.length] = "shi";
+        nums.push("pushed"); // syntatically the more onvinient method to append numbers to the end of an array.
+        console.log("Appending 2 items to the end changes the length to " + nums.length, "and the array itself to: ", nums);
       }();
    </script>
   </body>
