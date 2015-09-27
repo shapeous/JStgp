@@ -85,6 +85,19 @@
         console.log("Splicing items 7, and 8 (formally 8, 9)", num3, " num3.len: " + num3.length);
         nums.splice(5, 1, "seis", "seis 1 1/2");
         console.log("Splicing item 5, and inserting 2 items ", nums, " nums.len: " + nums.length);
+        
+        console.log("\n** Arrays: Enumeration **");
+        var i, j, n = nums.length;
+        
+        console.log("\nThe 'for in' statement: does not guarantee the order");
+        for (var i in nums) {
+          console.log(i + ": ", nums[i]);
+        }
+        
+        console.log("\nThe 'for' statment does ganrantee the order");
+        for (j = 0; j < n; j +=1) {
+          console.log(j + ": ", nums[j]);
+        }
       }();
    </script>
   </body>
