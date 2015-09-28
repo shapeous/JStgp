@@ -98,6 +98,16 @@
         for (j = 0; j < n; j += 1) {
           console.log(j + ": ", nums[j]);
         }
+        
+        console.log("\n** Arrays: Confusion **");
+        var is_Array = function (arr) {
+          return  Object.prototype.toString.apply(arr) === '[object Array]';
+        };
+        
+        console.log
+        ( "typeof nums: ", typeof nums
+        , "\n, is_Array(nums): ", is_Array(nums)
+        , "\t<- Because 'typeof' does not identify arrays as such, Crockford defined this function."  );
       }();
    </script>
   </body>
