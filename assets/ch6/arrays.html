@@ -89,13 +89,13 @@
         console.log("\n** Arrays: Enumeration **");
         var i, j, n = nums.length;
         
-        console.log("\nThe 'for in' statement: does not guarantee the order");
+        console.log("\nThe 'for in' statement does not guarantee the order");
         for (var i in nums) {
           console.log(i + ": ", nums[i]);
         }
         
-        console.log("\nThe 'for' statment does ganrantee the order");
-        for (j = 0; j < n; j +=1) {
+        console.log("\nThe 'for' statement does ganrantee the order");
+        for (j = 0; j < n; j += 1) {
           console.log(j + ": ", nums[j]);
         }
       }();
