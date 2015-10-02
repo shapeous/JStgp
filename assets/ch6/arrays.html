@@ -143,6 +143,66 @@
         console.log("\n", data, data.total(), "\t\t\t\tBefore");
         data.splice(0, 1, 4, 40, 50, 2);
         console.log("\n", data, data.total(), "\tAfter adding elements the total updates itself");
+        
+        console.log("\n** Arrays: Demensions **");
+        
+        // Initializing arrays
+        Array.dim = function (dimension, initial) {
+          var a =[], i;
+          for (i = 0; i < dimension; i += 1) {
+            a[i] = initial;
+          }
+          return a;
+        };
+        
+        var arr = Array.dim(10, 0);
+        console.log(arr.length, arr[9]);
+        
+        var matrix =
+        [ [0,1,2]
+        , [3,4,5]
+        , [6,7,8]
+        ];
+        console.log(matrix[2][1]);
+        
+        // Initializing matrixes
+        Array.matrix = function (rows, cols, initial) {
+          var a, r, c, mat = [];
+          
+          for (r = 0; r < rows; r += 1) {
+            a = [];
+            for (c = 0; c < cols; c += 1) {
+              a[c] = initial;
+            }
+            mat[r] = a;
+          }
+          return mat;
+        };
+        
+        var matrix4by4 = Array.matrix(4, 2, 0);
+        console.log(matrix4by4[3][1]);
+        
+        // Creating and initializing identity matrixes
+        Array.identity = function (n) {
+          var i, mat = Array.matrix(n, n, 0);
+          
+          for (i = 0; i < n; i += 1) {
+            mat[i][i] = 1;
+          }
+          return mat;
+        };
+        
+        var n = 4
+          , identity = Array.identity(n)
+          , r, c;
+        
+        document.write("<p><br>Displaying our identity:<br>");
+        for (r = 0; r < n; r += 1) {
+          for (c = 0; c < n; c += 1) {
+            document.write(identity[r][c]);
+          }
+          document.write("<br>");
+        }
       }();
    </script>
   </body>
