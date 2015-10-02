@@ -108,6 +108,41 @@
         ( "typeof nums: ", typeof nums
         , "\n, is_Array(nums): ", is_Array(nums)
         , "\t<- Because 'typeof' does not identify arrays as such, Crockford defined this function."  );
+        
+        console.log("\n** Arrays: Methods **");
+        
+        // ES5 already has this method defined
+        //Array.method(' reduce', function (f, value) {
+        //  var i;
+        //  for (i = 0; i < this.length; i += 1) {
+        //    value = f(this[i], value); 
+        //  }
+        //  return value; 
+        //});
+        var data = [4,8,15,16,23,42];
+        
+        var add = function (a, b) {
+          return a + b;
+        };
+        
+        var mul = function (a, b) {
+          return a * b;
+        };
+        
+        console.log
+        ( data
+        , "Sumation: "
+        , data.reduce(add, 0)
+        , "Multiplication: "
+        , data.reduce(mul, 1) );
+        
+        // Since arrays are objects, we can add a method, total to array data.
+        data.total = function () {
+          return this.reduce(add, 0);
+        };
+        console.log("\n", data, data.total(), "\t\t\t\tBefore");
+        data.splice(0, 1, 4, 40, 50, 2);
+        console.log("\n", data, data.total(), "\tAfter adding elements the total updates itself");
       }();
    </script>
   </body>
