@@ -144,7 +144,7 @@
         data.splice(0, 1, 4, 40, 50, 2);
         console.log("\n", data, data.total(), "\tAfter adding elements the total updates itself");
         
-        console.log("\n** Arrays: Demensions **");
+        console.log("\n** Arrays: Dimensions **");
         
         // Initializing arrays
         Array.dim = function (dimension, initial) {
@@ -179,8 +179,8 @@
           return mat;
         };
         
-        var matrix4by4 = Array.matrix(4, 2, 0);
-        console.log(matrix4by4[3][1]);
+        var matrix4by2 = Array.matrix(4, 2, 0);
+        console.log(matrix4by2[3][1]);
         
         // Creating and initializing identity matrixes
         Array.identity = function (n) {
@@ -192,13 +192,13 @@
           return mat;
         };
         
-        var n = 4
-          , identity = Array.identity(n)
+        var N = 4
+          , identity = Array.identity(N)
           , r, c;
         
         document.write("<p><br>Displaying our identity:<br>");
-        for (r = 0; r < n; r += 1) {
-          for (c = 0; c < n; c += 1) {
+        for (r = 0; r < N; r += 1) {
+          for (c = 0; c < N; c += 1) {
             document.write(identity[r][c]);
           }
           document.write("<br>");
