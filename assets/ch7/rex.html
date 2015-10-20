@@ -34,7 +34,6 @@
         var names = ['url','scheme','slash','host','port','path','query','hash'];
         var blanks = ' ';
         var i;
-        
         console.log(result);
         for (i = 0; i < names.length; i += 1) {
           console.log
@@ -43,6 +42,19 @@
           , result[i]
           );
         }
+        
+        var parse_num = /^-?\d+(?:\.\d*)?(?:e[+\-]?\d+)?$/i;
+        var testNum = function (num) {
+          return parse_num.test(num);
+        };
+        console.log
+        ( testNum("1")
+        , testNum("number")
+        , testNum("98.6")
+        , testNum("132.21.86.100")
+        , testNum("123.45E-67")
+        , testNum("123.45D-67")
+        );
       }();
    </script>
   </body>
