@@ -61,6 +61,10 @@
         // Make a regular expression object that matches a JavaScript string
         var parseJS = new RegExp("\"(?:\\\\.|[^\\\\\\\"])*\"", "g");
         console.log(parseJS.test("var myvar = \"Hello, World!\";"));
+        
+        console.log("** Elements **");
+        console.log("RegExp Choices:", "into".match(/in|int/));
+        console.log("RegExp Classes:", "p@$$w0rd".match(/[!-\/:-@\[-`{-~]/));
       }();
    </script>
   </body>
