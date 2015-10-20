@@ -55,6 +55,12 @@
         , testNum("123.45E-67")
         , testNum("123.45D-67")
         );
+        
+        console.log("** The RegExp Constructor **");
+        
+        // Make a regular expression object that matches a JavaScript string
+        var parseJS = new RegExp("\"(?:\\\\.|[^\\\\\\\"])*\"", "g");
+        console.log(parseJS.test("var myvar = \"Hello, World!\";"));
       }();
    </script>
   </body>
