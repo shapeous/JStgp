@@ -26,8 +26,98 @@
     </ul>
     <script>
       var shapeous = function () { // Shapeous app object
+        "use strict";
         console.log("** Methods **");
         
+        var a = ['a','b','c'];
+        var b = ['x','y','z'];
+        var c = a.concat(b, true);
+        
+        console.log
+        ( '\nConcat:'
+        , '\nArray a:', a
+        , '\nArray b:', b
+        , '\nArray c:', c
+        );
+        
+        a.push('d');
+        var d = a.join('');
+        console.log
+        ( "\nJoin:"
+        , "\na.join(''):", d
+        );
+        
+        var e = a.pop();
+        console.log
+        ( "\nPop:"
+        , "\na.pop():", e
+        , "\na      :", a
+        );
+        
+        var f = a.push(b, true);
+        console.log
+        ( "\nPush:"
+        , "\na.push(b, true):", f
+        , "\na              :", a
+        );
+        
+        a.pop();
+        a.pop();
+        var g = a.reverse();
+        console.log
+        ( "\nReverse:"
+        , "\na.reverse():", g
+        , "\na          :", a
+        );
+        a.reverse();
+        
+        var h = a.shift();
+        console.log
+        ( "\nShift:"
+        , "\na.shift():", h
+        , "\na        :", a
+        );
+        
+        a = ['a','b','c'];
+        var i = a.slice(0, 1);
+        var j = a.slice(1);
+        var k = a.slice(1, 2);
+        console.log
+        ( "\nSlice:"
+        , "\na.slice(0, 1):", i
+        , "\na.slice(1)   :", j
+        , "\na.slice(1, 2):", k
+        , "\na            :", a
+        );
+        
+        var l = [4, 8, 15, 16, 23, 42];
+        var m = l.sort();
+        var n = [4, 8, 15, 16, 23, 42];
+        var o = n.sort(function (left, right) {
+          return left - right;
+        });
+        console.log
+        ( "\nSort:"
+        , "\nn.sort() [default compare        ]:", m
+        , "\nn.sort() [custom compare num only]:", o
+        );
+        
+        var p = ['aa', 'bb', 'a', 4, 8, 15, 16, 23, 'aa', 8, 42];
+        p.sort(function (left, right) {
+          var result = 0;
+          if (left === right) {
+            ;
+          } else if (typeof left === typeof right) {
+            result = left < right? -1 : 1;
+          } else {
+            result = typeof left < typeof right? -1 : 1;
+          }
+          return result;
+        });
+        console.log
+        ( "\nSort:"
+        , "\nn.sort() [custom compare num, str]:", p
+        );
       }();
    </script>
   </body>
