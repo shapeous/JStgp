@@ -118,6 +118,45 @@
         ( "\nSort:"
         , "\nn.sort() [custom compare num, str]:", p
         );
+        
+        console.log
+        ( "\nFunction 'by' takes a member name string and returns a comparison function"
+        , "that can be used to sort an array of objects that contain that member.");
+        var by = function (name) {
+          return function (o, p) {
+            var a, b;
+            if (typeof o === 'object' && typeof p === 'object' && o && p) {
+              a = o[name];
+              b = p[name];
+              if (a === b) {
+                return 0;
+              }
+              if (typeof a === typeof b) {
+                return a < b? -1 : 1;
+              }
+              return typeof a < typeof b? -1 : 1;
+            } else {
+              throw {
+                "name": "Error"
+              , "message": "Expecting an object when sorting by " + name
+              };
+            }
+          };
+        };
+        
+        var s =
+        [ {"first": "Joe", "last": "Besser"}
+        , {"first": "Moe", "last": "Howard"}
+        , {"first": "Joe", "last": "DeRita"}
+        , {"first": "Shemp", "last": "Howard"}
+        , {"first": "Larry", "last": "Fine"}
+        , {"first": "Curly", "last": "Howard"}
+        ];
+        
+        console.log
+        ( "\nSort By"
+        , s.sort(by('first'))//.sort(by('last')) - Sorting on multiple keys is not garanteed
+        );
       }();
    </script>
   </body>
