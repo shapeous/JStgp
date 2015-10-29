@@ -120,16 +120,17 @@
         );
         
         console.log
-        ( "\nFunction 'by' takes a member name string and returns a comparison function"
-        , "that can be used to sort an array of objects that contain that member.");
-        var by = function (name) {
+        ( "\Function 'by' takes a member name string and an optional minor comparison function and returns"
+        , "a comparison function that can be used to sort an array of objects that contain that member."
+        , "The minor comparison function is used to break ties when the o[name] and p[name] are equal.");
+        var by = function (name, minor) {
           return function (o, p) {
             var a, b;
-            if (typeof o === 'object' && typeof p === 'object' && o && p) {
+            if (o && p && typeof o === 'object' && typeof p === 'object') {
               a = o[name];
               b = p[name];
               if (a === b) {
-                return 0;
+                return typeof minor === 'function'? minor(o, p) : 0;
               }
               if (typeof a === typeof b) {
                 return a < b? -1 : 1;
@@ -154,8 +155,22 @@
         ];
         
         console.log
-        ( "\nSort By"
-        , s.sort(by('first'))//.sort(by('last')) - Sorting on multiple keys is not garanteed
+        ( "\nSort By using two keys:  "
+        , s.sort(by('last', by('first'))) // Multiple key sorting is now possible
+        );
+        
+        var t =
+        [ {"first": "Joe", "last": "Besser", "age": 10}
+        , {"first": "Moe", "last": "Howard", "age": 23}
+        , {"first": "Joe", "last": "DeRita", "age": 16}
+        , {"first": "Shemp", "last": "Howard", "age": 1}
+        , {"first": "Larry", "last": "Fine", "age": 10}
+        , {"first": "Curly", "last": "Howard", "age": 9}
+        ];
+        
+        console.log
+        ( "\nSort By using three keys:"
+        , t.sort(by('age', by('last', by('first'))))
         );
       }();
    </script>
