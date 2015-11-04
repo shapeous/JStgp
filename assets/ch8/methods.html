@@ -172,6 +172,22 @@
         ( "\nSort By using three keys:"
         , t.sort(by('age', by('last', by('first'))))
         );
+        
+        var u = a.splice(1, 1, "ache", "bug");
+        
+        console.log
+        ( '\Splice:'
+        , '\nArray a:', a
+        , '\nArray u:', u
+        );
+        
+        var v = a.splice(1, 2, "b");
+        v = a.unshift("@", "&");
+        console.log
+        ( '\nUnshift:'
+        , '\nArray a:', a
+        , '\nArray v:', v
+        );
       }();
    </script>
   </body>
