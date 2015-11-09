@@ -188,6 +188,47 @@
         , '\nArray a:', a
         , '\nArray v:', v
         );
+        
+        // Bind is already defined in the latest version of Google Chrome at least
+        var w = function () {
+          return this.value;
+        }.bind({value: 666});
+        console.log
+        ( '\nPredefined Bind'
+        , '\nw():', w()
+        );
+        
+        // Method 'method' is needed below
+        Function.prototype.method = function (name, func) {
+          this.prototype[name] = func;
+          return this;
+        };
+        Function.method('bindTo', function () {
+          // Return a function that will call this function as though it is a method of that object
+          var method= this
+            , that  = arguments[0]
+            , slice = Array.prototype.slice
+            , args  = slice.apply(arguments, [1]);
+            
+            return function () {
+              return method.apply
+              ( that
+              , args.concat
+                ( slice.apply
+                  ( arguments
+                  , [0] ) ) )
+            };
+        });
+        
+        var x = function () {
+          return this.value;
+        }.bindTo({value: 666});
+        console.log
+        ( '\nNewly defined "BindTo" method (Using "Function.apply")'
+        , '\nx():', x()
+        , '\nis w() === x()?', w() === x()
+        , '\nIs Function.bind === Function.bindTo?', Function.bind === Function.bindTo
+        );
       }();
    </script>
   </body>
