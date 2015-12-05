@@ -244,6 +244,16 @@
         console.log(Math.PI.toString(8  ));
         console.log(Math.PI.toString(16 ));
         console.log(Math.PI.toString(   ));
+        
+        console.log("\n\n** Object **");
+        
+        console.log("\nhasOwnProperty");
+        var a = {member: true}
+          , b = Object.create(a)
+          ;
+        console.log(a.hasOwnProperty('member'));
+        console.log(b.hasOwnProperty('member'));
+        console.log(b.member);
       }();
    </script>
   </body>
