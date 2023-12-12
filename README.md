@@ -1,3 +1,3 @@
 # JStgp
 
-A repo for the files I generate while reading this book.
+Practice file from reading the book, JavaScript: The Good Parts.
